@@ -1,4 +1,4 @@
-# 📚 Parâmetros e Escopo em Java - Apresentação Interativa
+# 📚 Parâmetros e Escopo em Java
 
 Uma apresentação web interativa sobre conceitos fundamentais de **Parâmetros e Escopo em Java**, desenvolvida para o curso Técnico de Informática - 2° Ano, disciplina de Lógica de Programação II.
 
