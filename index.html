@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parâmetros e Escopo em Java - Lógica de Programação II</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "pastel-blue": "#E8F4FD",
+              "pastel-purple": "#F3E8FF",
+              "pastel-pink": "#FDF2F8",
+              "pastel-green": "#F0FDF4",
+              "pastel-yellow": "#FFFBEB",
+              "pastel-orange": "#FFF7ED",
+              "soft-blue": "#DBEAFE",
+              "soft-purple": "#E9D5FF",
+              "soft-pink": "#FCE7F3",
+              "soft-green": "#DCFCE7",
+              "soft-yellow": "#FEF3C7",
+              "soft-orange": "#FED7AA",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-gradient-to-br from-pastel-blue via-pastel-purple to-pastel-pink min-h-screen"
+  >
+    <div class="max-w-6xl mx-auto p-6">
+      <div class="glass-effect rounded-3xl shadow-2xl overflow-hidden">
+        <!-- Slide 1: Título -->
+        <div class="slide active p-12 min-h-[600px] slide-transition">
+          <div class="text-center space-y-8">
+            <div
+              class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full text-sm font-medium"
+            >
+              <span>🎓</span>
+              Lógica de Programação II
+            </div>
+
+            <h1
+              class="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+            >
+              Parâmetros e Escopo em Java
+            </h1>
+
+            <div
+              class="bg-gradient-to-r from-soft-purple to-soft-blue rounded-2xl p-8 max-w-2xl mx-auto"
+            >
+              <h2 class="text-2xl font-semibold text-gray-700 mb-4">
+                Curso Técnico de Informática - 2° Ano
+              </h2>
+              <p class="text-gray-600">
+                Conceitos fundamentais para programação limpa e eficiente
+              </p>
+            </div>
+
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12"
+            >
+              <div
+                class="bg-pastel-green rounded-xl p-6 text-center hover:scale-105 transition-transform"
+              >
+                <div class="text-3xl mb-2">🔍</div>
+                <h3 class="font-semibold text-gray-700">Escopo de Variáveis</h3>
+              </div>
+              <div
+                class="bg-pastel-yellow rounded-xl p-6 text-center hover:scale-105 transition-transform"
+              >
+                <div class="text-3xl mb-2">📤</div>
+                <h3 class="font-semibold text-gray-700">
+                  Passagem de Parâmetros
+                </h3>
+              </div>
+              <div
+                class="bg-pastel-pink rounded-xl p-6 text-center hover:scale-105 transition-transform"
+              >
+                <div class="text-3xl mb-2">✅</div>
+                <h3 class="font-semibold text-gray-700">Boas Práticas</h3>
+              </div>
+              <div
+                class="bg-pastel-orange rounded-xl p-6 text-center hover:scale-105 transition-transform"
+              >
+                <div class="text-3xl mb-2">💻</div>
+                <h3 class="font-semibold text-gray-700">Atividade Prática</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Escopo de Variáveis -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-green px-4 py-2 rounded-full text-green-700 font-medium mb-4"
+              >
+                <span>🔍</span>
+                Conceito Fundamental
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Escopo de Variáveis
+              </h1>
+              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <strong>Escopo</strong> define onde uma variável pode ser
+                acessada no seu código
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div
+                class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200"
+              >
+                <div class="text-3xl mb-3">🏠</div>
+                <h3 class="text-lg font-semibold text-blue-800 mb-2">
+                  Escopo Local
+                </h3>
+                <p class="text-blue-700 text-sm">
+                  Dentro de métodos ou blocos específicos
+                </p>
+              </div>
+              <div
+                class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 border border-purple-200"
+              >
+                <div class="text-3xl mb-3">🏢</div>
+                <h3 class="text-lg font-semibold text-purple-800 mb-2">
+                  Escopo de Classe
+                </h3>
+                <p class="text-purple-700 text-sm">
+                  Variáveis de instância da classe
+                </p>
+              </div>
+              <div
+                class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 border border-orange-200"
+              >
+                <div class="text-3xl mb-3">🌍</div>
+                <h3 class="text-lg font-semibold text-orange-800 mb-2">
+                  Escopo Global
+                </h3>
+                <p class="text-orange-700 text-sm">
+                  Variáveis estáticas acessíveis globalmente
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-gray-900 rounded-2xl p-6 overflow-x-auto">
+              <div class="text-gray-300 font-mono text-sm leading-relaxed">
+                <div class="text-green-400 mb-2">
+                  // Exemplo prático de escopo
+                </div>
+                <div>
+                  <span class="text-blue-400">public class</span>
+                  <span class="text-yellow-300">ExemploEscopo</span> {
+                </div>
+                <div class="ml-4 text-gray-400">// Escopo de classe</div>
+                <div class="ml-4">
+                  <span class="text-blue-400">private int</span>
+                  <span class="text-white">variavelClasse</span> =
+                  <span class="text-green-300">10</span>;
+                </div>
+                <div class="ml-4 text-gray-400 mt-2">// Escopo global</div>
+                <div class="ml-4">
+                  <span class="text-blue-400">public static int</span>
+                  <span class="text-white">variavelGlobal</span> =
+                  <span class="text-green-300">100</span>;
+                </div>
+                <div class="mt-4 ml-4">
+                  <span class="text-blue-400">public void</span>
+                  <span class="text-yellow-300">metodo</span>() {
+                </div>
+                <div class="ml-8 text-gray-400">// Escopo local</div>
+                <div class="ml-8">
+                  <span class="text-blue-400">int</span>
+                  <span class="text-white">variavelLocal</span> =
+                  <span class="text-green-300">5</span>;
+                </div>
+                <div class="ml-8 mt-2">
+                  <span class="text-blue-400">if</span> (<span
+                    class="text-green-300"
+                    >true</span
+                  >) {
+                </div>
+                <div class="ml-12">
+                  <span class="text-blue-400">int</span>
+                  <span class="text-white">variavelBloco</span> =
+                  <span class="text-green-300">3</span>;
+                  <span class="text-green-400">// ✅ Funciona aqui</span>
+                </div>
+                <div class="ml-8">}</div>
+                <div class="ml-8 text-red-400">
+                  // variavelBloco não existe aqui! ❌
+                </div>
+                <div class="ml-4">}</div>
+                <div>}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Escopo Local vs Global -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                🎯 Local vs Global
+              </h1>
+              <p class="text-xl text-gray-600">
+                Comparando as diferentes abordagens de escopo
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Escopo Local -->
+              <div class="space-y-6">
+                <div
+                  class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
+                >
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">🏠</span>
+                    <h3 class="text-xl font-semibold text-green-800">
+                      Escopo Local
+                    </h3>
+                  </div>
+
+                  <div class="bg-gray-900 rounded-xl p-4 mb-4">
+                    <div class="text-gray-300 font-mono text-sm">
+                      <div>
+                        <span class="text-blue-400">public void</span>
+                        <span class="text-yellow-300">calcular</span>() {
+                      </div>
+                      <div class="ml-4">
+                        <span class="text-blue-400">int</span>
+                        <span class="text-white">numero</span> =
+                        <span class="text-green-300">10</span>;
+                        <span class="text-gray-400">// Local</span>
+                      </div>
+                      <div class="ml-4">
+                        <span class="text-blue-400">int</span>
+                        <span class="text-white">resultado</span> = numero *
+                        <span class="text-green-300">2</span>;
+                      </div>
+                      <div class="ml-4">System.out.println(resultado);</div>
+                      <div>}</div>
+                      <div class="text-red-400 mt-2">
+                        // 'numero' não existe aqui!
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-green-700">
+                      <span class="text-green-500">✅</span>
+                      <span class="text-sm font-medium">Mais seguro</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-green-700">
+                      <span class="text-green-500">✅</span>
+                      <span class="text-sm font-medium">Evita conflitos</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-green-700">
+                      <span class="text-green-500">✅</span>
+                      <span class="text-sm font-medium"
+                        >Economia de memória</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Escopo Global -->
+              <div class="space-y-6">
+                <div
+                  class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-200"
+                >
+                  <div class="flex items-center gap-3 mb-4">
+                    <span class="text-2xl">🌍</span>
+                    <h3 class="text-xl font-semibold text-orange-800">
+                      Escopo Global
+                    </h3>
+                  </div>
+
+                  <div class="bg-gray-900 rounded-xl p-4 mb-4">
+                    <div class="text-gray-300 font-mono text-sm">
+                      <div>
+                        <span class="text-blue-400">public class</span>
+                        <span class="text-yellow-300">Calculadora</span> {
+                      </div>
+                      <div class="ml-4">
+                        <span class="text-blue-400">static int</span>
+                        <span class="text-white">contador</span> =
+                        <span class="text-green-300">0</span>;
+                        <span class="text-gray-400">// Global</span>
+                      </div>
+                      <div class="mt-2 ml-4">
+                        <span class="text-blue-400">public void</span>
+                        <span class="text-yellow-300">somar</span>() {
+                      </div>
+                      <div class="ml-8">
+                        contador++;
+                        <span class="text-gray-400">// Acessa global</span>
+                      </div>
+                      <div class="ml-4">}</div>
+                      <div class="mt-2 ml-4">
+                        <span class="text-blue-400">public void</span>
+                        <span class="text-yellow-300">mostrar</span>() {
+                      </div>
+                      <div class="ml-8">System.out.println(contador);</div>
+                      <div class="ml-4">}</div>
+                      <div>}</div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-orange-700">
+                      <span class="text-orange-500">⚠️</span>
+                      <span class="text-sm font-medium">Use com cuidado</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-orange-700">
+                      <span class="text-orange-500">⚠️</span>
+                      <span class="text-sm font-medium"
+                        >Pode causar efeitos colaterais</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2 text-orange-700">
+                      <span class="text-orange-500">⚠️</span>
+                      <span class="text-sm font-medium"
+                        >Dificulta manutenção</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Passagem de Parâmetros -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-blue px-4 py-2 rounded-full text-blue-700 font-medium mb-4"
+              >
+                <span>📤</span>
+                Mecanismo Fundamental
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Passagem de Parâmetros
+              </h1>
+              <div
+                class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 max-w-4xl mx-auto"
+              >
+                <p class="text-lg text-gray-700">
+                  Java sempre usa
+                  <span
+                    class="bg-blue-200 px-2 py-1 rounded font-semibold text-blue-800"
+                    >passagem por valor</span
+                  >, mas o comportamento varia conforme o tipo
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-8">
+              <!-- Tipos Primitivos -->
+              <div
+                class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">🔢</span>
+                  <h3 class="text-xl font-semibold text-green-800">
+                    Tipos Primitivos
+                  </h3>
+                  <span
+                    class="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    int, double, boolean, char
+                  </span>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl p-4">
+                  <div class="text-gray-300 font-mono text-sm leading-relaxed">
+                    <div>
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">modificarPrimitivo</span
+                      >(<span class="text-blue-400">int</span> numero) {
+                    </div>
+                    <div class="ml-4">
+                      numero = <span class="text-green-300">100</span>;
+                      <span class="text-gray-400"
+                        >// Modifica apenas a cópia local</span
+                      >
+                    </div>
+                    <div class="ml-4">
+                      System.out.println(<span class="text-orange-300"
+                        >"Dentro: "</span
+                      >
+                      + numero);
+                    </div>
+                    <div>}</div>
+                    <div class="mt-3">
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">main</span>(String[] args) {
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">int</span> valor =
+                      <span class="text-green-300">10</span>;
+                    </div>
+                    <div class="ml-4">modificarPrimitivo(valor);</div>
+                    <div class="ml-4">
+                      System.out.println(<span class="text-orange-300"
+                        >"Fora: "</span
+                      >
+                      + valor);
+                      <span class="text-green-400">// Ainda é 10!</span>
+                    </div>
+                    <div>}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Objetos e Arrays -->
+              <div
+                class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">📦</span>
+                  <h3 class="text-xl font-semibold text-purple-800">
+                    Objetos e Arrays
+                  </h3>
+                  <span
+                    class="bg-purple-200 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    Referências são copiadas
+                  </span>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl p-4">
+                  <div class="text-gray-300 font-mono text-sm leading-relaxed">
+                    <div>
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">modificarArray</span>(<span
+                        class="text-blue-400"
+                        >int[]</span
+                      >
+                      array) {
+                    </div>
+                    <div class="ml-4">
+                      array[<span class="text-green-300">0</span>] =
+                      <span class="text-green-300">999</span>;
+                      <span class="text-gray-400"
+                        >// Modifica o objeto original!</span
+                      >
+                    </div>
+                    <div class="ml-4">
+                      System.out.println(<span class="text-orange-300"
+                        >"Dentro: "</span
+                      >
+                      + array[<span class="text-green-300">0</span>]);
+                    </div>
+                    <div>}</div>
+                    <div class="mt-3">
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">main</span>(String[] args) {
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">int[]</span> numeros = {<span
+                        class="text-green-300"
+                        >1</span
+                      >, <span class="text-green-300">2</span>,
+                      <span class="text-green-300">3</span>};
+                    </div>
+                    <div class="ml-4">modificarArray(numeros);</div>
+                    <div class="ml-4">
+                      System.out.println(<span class="text-orange-300"
+                        >"Fora: "</span
+                      >
+                      + numeros[<span class="text-green-300">0</span>]);
+                      <span class="text-red-400">// Agora é 999!</span>
+                    </div>
+                    <div>}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Boas Práticas -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-green px-4 py-2 rounded-full text-green-700 font-medium mb-4"
+              >
+                <span>✅</span>
+                Código Limpo
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Boas Práticas
+              </h1>
+              <p class="text-xl text-gray-600">
+                Princípios para código mais limpo e maintível
+              </p>
+            </div>
+
+            <div class="space-y-8">
+              <!-- Prática 1: Minimizar Globais -->
+              <div
+                class="bg-gradient-to-r from-red-50 to-green-50 rounded-2xl p-6 border border-gray-200"
+              >
+                <div class="flex items-center gap-3 mb-6">
+                  <span class="text-2xl">🎯</span>
+                  <h3 class="text-xl font-semibold text-gray-800">
+                    1. Minimizar Variáveis Globais
+                  </h3>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div class="space-y-3">
+                    <div
+                      class="flex items-center gap-2 text-red-700 font-medium"
+                    >
+                      <span class="text-red-500">❌</span>
+                      <span>Evite:</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-4">
+                      <div class="text-gray-300 font-mono text-sm">
+                        <div>
+                          <span class="text-blue-400">public class</span>
+                          <span class="text-yellow-300">Ruim</span> {
+                        </div>
+                        <div class="ml-4">
+                          <span class="text-blue-400">static int</span> x, y,
+                          resultado;
+                        </div>
+                        <div class="mt-2 ml-4">
+                          <span class="text-blue-400">public static void</span>
+                          <span class="text-yellow-300">somar</span>() {
+                        </div>
+                        <div class="ml-8">resultado = x + y;</div>
+                        <div class="ml-4">}</div>
+                        <div>}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-3">
+                    <div
+                      class="flex items-center gap-2 text-green-700 font-medium"
+                    >
+                      <span class="text-green-500">✅</span>
+                      <span>Prefira:</span>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-4">
+                      <div class="text-gray-300 font-mono text-sm">
+                        <div>
+                          <span class="text-blue-400">public class</span>
+                          <span class="text-yellow-300">Bom</span> {
+                        </div>
+                        <div class="ml-4">
+                          <span class="text-blue-400">public static int</span>
+                          <span class="text-yellow-300">somar</span>(<span
+                            class="text-blue-400"
+                            >int</span
+                          >
+                          x, <span class="text-blue-400">int</span> y) {
+                        </div>
+                        <div class="ml-8">
+                          <span class="text-blue-400">return</span> x + y;
+                        </div>
+                        <div class="ml-4">}</div>
+                        <div>}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Prática 2: Parâmetros Claros -->
+              <div
+                class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">📝</span>
+                  <h3 class="text-xl font-semibold text-orange-800">
+                    2. Parâmetros Claros e Descritivos
+                  </h3>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl p-4">
+                  <div class="text-gray-300 font-mono text-sm space-y-2">
+                    <div class="text-red-400">// ❌ Confuso</div>
+                    <div>
+                      <span class="text-blue-400">public void</span>
+                      <span class="text-yellow-300">processar</span>(<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      a, <span class="text-blue-400">int</span> b,
+                      <span class="text-blue-400">boolean</span> c) { }
+                    </div>
+
+                    <div class="text-green-400 mt-4">// ✅ Claro</div>
+                    <div>
+                      <span class="text-blue-400">public void</span>
+                      <span class="text-yellow-300">calcularDesconto</span
+                      >(<span class="text-blue-400">int</span> preco,
+                      <span class="text-blue-400">int</span> percentual,
+                      <span class="text-blue-400">boolean</span> clienteVip) { }
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Prática 3: Evitar Efeitos Colaterais -->
+              <div
+                class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">🚫</span>
+                  <h3 class="text-xl font-semibold text-blue-800">
+                    3. Evitar Efeitos Colaterais
+                  </h3>
+                </div>
+
+                <div class="bg-blue-100 rounded-xl p-4 border border-blue-200">
+                  <div class="text-blue-800 font-medium text-center">
+                    💡 <strong>Princípio:</strong> Uma função deve fazer apenas
+                    uma coisa e fazê-la bem!<br />
+                    Evite modificar variáveis globais dentro de métodos.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Atividade Prática - Introdução -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-orange px-4 py-2 rounded-full text-orange-700 font-medium mb-4"
+              >
+                <span>💻</span>
+                Hands-on
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Atividade Prática
+              </h1>
+              <p class="text-xl text-gray-600">
+                Vamos aplicar os conceitos na prática!
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-8 border border-orange-200"
+            >
+              <div class="space-y-6">
+                <div class="text-center">
+                  <div class="text-4xl mb-4">🎯</div>
+                  <h2 class="text-2xl font-bold text-orange-800 mb-4">
+                    Objetivo do Exercício
+                  </h2>
+                  <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Implementar duas funções para ordenação de arrays e
+                    demonstrar a diferença entre abordagens com e sem efeitos
+                    colaterais
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="bg-white rounded-2xl p-6 border border-red-200">
+                    <div class="text-2xl mb-3">⚠️</div>
+                    <h3 class="font-semibold text-red-800 mb-2">
+                      Função que Modifica
+                    </h3>
+                    <p class="text-red-700 text-sm">
+                      Altera o array original (efeito colateral)
+                    </p>
+                  </div>
+                  <div class="bg-white rounded-2xl p-6 border border-green-200">
+                    <div class="text-2xl mb-3">✅</div>
+                    <h3 class="font-semibold text-green-800 mb-2">
+                      Função que Copia
+                    </h3>
+                    <p class="text-green-700 text-sm">
+                      Retorna nova cópia ordenada (sem efeito colateral)
+                    </p>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 border border-gray-200">
+                  <h3
+                    class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                  >
+                    <span>📋</span>
+                    Especificações:
+                  </h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-gray-700">Usar Bubble Sort</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-gray-700"
+                        >Demonstrar comportamentos</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-gray-700">Comparar resultados</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-gray-700">Aplicar boas práticas</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-100 rounded-2xl p-4 border border-blue-200">
+                  <div class="text-blue-800 font-medium text-center">
+                    💡 <strong>Dica:</strong> Observe como cada função afeta (ou
+                    não) o array original!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: Implementação - Função que Modifica -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-orange px-4 py-2 rounded-full text-orange-700 font-medium mb-4"
+              >
+                <span>🔧</span>
+                Implementação - Parte 1
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Função que Modifica o Array Original
+              </h1>
+              <p class="text-xl text-gray-600">
+                Implementação com efeito colateral
+              </p>
+            </div>
+
+            <div class="space-y-6">
+              <div
+                class="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-6 border border-red-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">⚠️</span>
+                  <h3 class="text-xl font-semibold text-red-800">
+                    Função com Efeito Colateral
+                  </h3>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl p-6 overflow-x-auto">
+                  <div class="text-gray-300 font-mono text-sm leading-relaxed">
+                    <div class="text-green-400">/**</div>
+                    <div class="text-green-400">
+                      * Ordena o array original (com efeito colateral)
+                    </div>
+                    <div class="text-green-400">
+                      * @param array - array a ser ordenado
+                    </div>
+                    <div class="text-green-400">*/</div>
+                    <div class="mt-2">
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">ordenarOriginal</span>(<span
+                        class="text-blue-400"
+                        >int[]</span
+                      >
+                      array) {
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">int</span> n = array.length;
+                    </div>
+                    <div class="mt-2 ml-4 text-gray-400">
+                      // Bubble Sort - modifica o array original
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">for</span> (<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      i = <span class="text-green-300">0</span>; i &lt; n -
+                      <span class="text-green-300">1</span>; i++) {
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-blue-400">for</span> (<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      j = <span class="text-green-300">0</span>; j &lt; n - i -
+                      <span class="text-green-300">1</span>; j++) {
+                    </div>
+                    <div class="ml-12">
+                      <span class="text-blue-400">if</span> (array[j] &gt;
+                      array[j + <span class="text-green-300">1</span>]) {
+                    </div>
+                    <div class="ml-16 text-gray-400">// Troca os elementos</div>
+                    <div class="ml-16">
+                      <span class="text-blue-400">int</span> temp = array[j];
+                    </div>
+                    <div class="ml-16">
+                      array[j] = array[j +
+                      <span class="text-green-300">1</span>];
+                    </div>
+                    <div class="ml-16">
+                      array[j + <span class="text-green-300">1</span>] = temp;
+                    </div>
+                    <div class="ml-12">}</div>
+                    <div class="ml-8">}</div>
+                    <div class="ml-4">}</div>
+                    <div class="mt-2 ml-4">
+                      System.out.println(<span class="text-orange-300"
+                        >"Array ordenado (modificado)!"</span
+                      >);
+                    </div>
+                    <div>}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-r from-red-100 to-orange-100 rounded-2xl p-6 border border-red-300"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-2xl">⚠️</span>
+                  <h4 class="text-lg font-semibold text-red-800">
+                    Atenção: Efeito Colateral!
+                  </h4>
+                </div>
+                <div class="text-red-700">
+                  <p class="mb-2">
+                    <strong>Esta função modifica o array original!</strong>
+                  </p>
+                  <p>
+                    Isso é um <strong>efeito colateral</strong> - nem sempre é
+                    desejado.
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+                <div class="text-blue-800">
+                  <h4 class="font-semibold mb-2 flex items-center gap-2">
+                    <span>💡</span>
+                    Características desta abordagem:
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span class="text-sm">Modifica dados originais</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span class="text-sm">Pode causar bugs inesperados</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span class="text-sm">Usa menos memória</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span class="text-sm">Mais rápida</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: Implementação - Função que Retorna Cópia -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-green px-4 py-2 rounded-full text-green-700 font-medium mb-4"
+              >
+                <span>🔧</span>
+                Implementação - Parte 2
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Função que Retorna Cópia Ordenada
+              </h1>
+              <p class="text-xl text-gray-600">
+                Implementação sem efeito colateral
+              </p>
+            </div>
+
+            <div class="space-y-6">
+              <div
+                class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">✅</span>
+                  <h3 class="text-xl font-semibold text-green-800">
+                    Função Sem Efeito Colateral
+                  </h3>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl p-6 overflow-x-auto">
+                  <div class="text-gray-300 font-mono text-sm leading-relaxed">
+                    <div class="text-green-400">/**</div>
+                    <div class="text-green-400">
+                      * Retorna uma cópia ordenada (sem efeito colateral)
+                    </div>
+                    <div class="text-green-400">
+                      * @param array - array original (não modificado)
+                    </div>
+                    <div class="text-green-400">
+                      * @return nova array ordenada
+                    </div>
+                    <div class="text-green-400">*/</div>
+                    <div class="mt-2">
+                      <span class="text-blue-400">public static int[]</span>
+                      <span class="text-yellow-300">obterCopiaOrdenada</span
+                      >(<span class="text-blue-400">int[]</span> array) {
+                    </div>
+                    <div class="ml-4 text-gray-400">
+                      // Cria uma cópia do array original
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">int[]</span> copia =
+                      <span class="text-blue-400">new int</span>[array.length];
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">for</span> (<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      i = <span class="text-green-300">0</span>; i &lt;
+                      array.length; i++) {
+                    </div>
+                    <div class="ml-8">copia[i] = array[i];</div>
+                    <div class="ml-4">}</div>
+                    <div class="mt-2 ml-4 text-gray-400">
+                      // Ordena apenas a cópia
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">int</span> n = copia.length;
+                    </div>
+                    <div class="ml-4">
+                      <span class="text-blue-400">for</span> (<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      i = <span class="text-green-300">0</span>; i &lt; n -
+                      <span class="text-green-300">1</span>; i++) {
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-blue-400">for</span> (<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      j = <span class="text-green-300">0</span>; j &lt; n - i -
+                      <span class="text-green-300">1</span>; j++) {
+                    </div>
+                    <div class="ml-12">
+                      <span class="text-blue-400">if</span> (copia[j] &gt;
+                      copia[j + <span class="text-green-300">1</span>]) {
+                    </div>
+                    <div class="ml-16">
+                      <span class="text-blue-400">int</span> temp = copia[j];
+                    </div>
+                    <div class="ml-16">
+                      copia[j] = copia[j +
+                      <span class="text-green-300">1</span>];
+                    </div>
+                    <div class="ml-16">
+                      copia[j + <span class="text-green-300">1</span>] = temp;
+                    </div>
+                    <div class="ml-12">}</div>
+                    <div class="ml-8">}</div>
+                    <div class="ml-4">}</div>
+                    <div class="mt-2 ml-4">
+                      <span class="text-blue-400">return</span> copia;
+                      <span class="text-gray-400"
+                        >// Retorna a cópia ordenada</span
+                      >
+                    </div>
+                    <div>}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6 border border-green-300"
+              >
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-2xl">✅</span>
+                  <h4 class="text-lg font-semibold text-green-800">
+                    Vantagem: Sem Efeitos Colaterais!
+                  </h4>
+                </div>
+                <div class="text-green-700">
+                  <p class="mb-2">
+                    <strong>O array original permanece inalterado!</strong>
+                  </p>
+                  <p>Isso evita efeitos colaterais indesejados.</p>
+                </div>
+              </div>
+
+              <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+                <div class="text-blue-800">
+                  <h4 class="font-semibold mb-2 flex items-center gap-2">
+                    <span>💡</span>
+                    Características desta abordagem:
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span class="text-sm">Preserva dados originais</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span class="text-sm">Mais segura</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                      <span class="text-sm">Usa mais memória</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                      <span class="text-sm">Ligeiramente mais lenta</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7: Demonstração Interativa -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-purple px-4 py-2 rounded-full text-purple-700 font-medium mb-4"
+              >
+                <span>🎮</span>
+                Demonstração Interativa
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Veja na Prática!
+              </h1>
+              <p class="text-xl text-gray-600">
+                Clique nos botões para ver a diferença entre as abordagens
+              </p>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 border border-purple-200"
+            >
+              <div class="space-y-6">
+                <div class="text-center">
+                  <div
+                    class="bg-white rounded-2xl p-4 border border-gray-200 inline-block"
+                  >
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                      Array Original:
+                    </h3>
+                    <div class="font-mono text-xl text-blue-600 font-bold">
+                      [64, 34, 25, 12, 22, 11, 90]
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <button
+                    class="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    onclick="demonstrarModificacao()"
+                  >
+                    <div class="text-2xl mb-2">🔄</div>
+                    <div>Modificar Original</div>
+                  </button>
+
+                  <button
+                    class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    onclick="demonstrarCopia()"
+                  >
+                    <div class="text-2xl mb-2">📋</div>
+                    <div>Retornar Cópia</div>
+                  </button>
+
+                  <button
+                    class="bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    onclick="resetarDemo()"
+                  >
+                    <div class="text-2xl mb-2">🔄</div>
+                    <div>Resetar</div>
+                  </button>
+                </div>
+
+                <div class="bg-gray-900 rounded-2xl p-6 min-h-[200px]">
+                  <div
+                    class="text-green-400 font-mono text-sm leading-relaxed whitespace-pre-wrap"
+                    id="output"
+                  >
+                    Clique em um dos botões acima para ver a demonstração!
+                  </div>
+                </div>
+
+                <div class="bg-blue-100 rounded-2xl p-4 border border-blue-200">
+                  <div class="text-blue-800 font-medium text-center">
+                    💡 <strong>Observe:</strong> Como cada função afeta (ou não)
+                    o array original!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 10: Código Completo -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-blue px-4 py-2 rounded-full text-blue-700 font-medium mb-4"
+              >
+                <span>📝</span>
+                Código Completo
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Implementação Completa
+              </h1>
+              <p class="text-xl text-gray-600">
+                Classe completa com método main para demonstração
+              </p>
+            </div>
+
+            <div class="space-y-6">
+              <div
+                class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">💻</span>
+                  <h3 class="text-xl font-semibold text-blue-800">
+                    Classe OrdenacaoDemo
+                  </h3>
+                </div>
+
+                <div
+                  class="bg-gray-900 rounded-xl p-6 overflow-x-auto max-h-96 overflow-y-auto"
+                >
+                  <div class="text-gray-300 font-mono text-sm leading-relaxed">
+                    <div>
+                      <span class="text-blue-400">public class</span>
+                      <span class="text-yellow-300">OrdenacaoDemo</span> {
+                    </div>
+                    <div class="mt-3 ml-4">
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">main</span>(String[] args) {
+                    </div>
+                    <div class="ml-8 text-gray-400">// Array de teste</div>
+                    <div class="ml-8">
+                      <span class="text-blue-400">int[]</span> numeros1 = {<span
+                        class="text-green-300"
+                        >64, 34, 25, 12, 22, 11, 90</span
+                      >};
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-blue-400">int[]</span> numeros2 = {<span
+                        class="text-green-300"
+                        >64, 34, 25, 12, 22, 11, 90</span
+                      >};
+                    </div>
+
+                    <div class="mt-3 ml-8">
+                      System.out.println(<span class="text-orange-300"
+                        >"=== TESTE 1: Modificar Original ==="</span
+                      >);
+                    </div>
+                    <div class="ml-8">
+                      System.out.print(<span class="text-orange-300"
+                        >"Antes: "</span
+                      >);
+                    </div>
+                    <div class="ml-8">imprimirArray(numeros1);</div>
+
+                    <div class="mt-2 ml-8">ordenarOriginal(numeros1);</div>
+
+                    <div class="mt-2 ml-8">
+                      System.out.print(<span class="text-orange-300"
+                        >"Depois: "</span
+                      >);
+                    </div>
+                    <div class="ml-8">imprimirArray(numeros1);</div>
+
+                    <div class="mt-3 ml-8">
+                      System.out.println(<span class="text-orange-300"
+                        >"\n=== TESTE 2: Retornar Cópia ==="</span
+                      >);
+                    </div>
+                    <div class="ml-8">
+                      System.out.print(<span class="text-orange-300"
+                        >"Original: "</span
+                      >);
+                    </div>
+                    <div class="ml-8">imprimirArray(numeros2);</div>
+
+                    <div class="mt-2 ml-8">
+                      <span class="text-blue-400">int[]</span> copiaOrdenada =
+                      obterCopiaOrdenada(numeros2);
+                    </div>
+
+                    <div class="mt-2 ml-8">
+                      System.out.print(<span class="text-orange-300"
+                        >"Original após função: "</span
+                      >);
+                    </div>
+                    <div class="ml-8">imprimirArray(numeros2);</div>
+                    <div class="ml-8">
+                      System.out.print(<span class="text-orange-300"
+                        >"Cópia ordenada: "</span
+                      >);
+                    </div>
+                    <div class="ml-8">imprimirArray(copiaOrdenada);</div>
+                    <div class="ml-4">}</div>
+
+                    <div class="mt-4 ml-4">
+                      <span class="text-blue-400">public static void</span>
+                      <span class="text-yellow-300">imprimirArray</span>(<span
+                        class="text-blue-400"
+                        >int[]</span
+                      >
+                      array) {
+                    </div>
+                    <div class="ml-8">
+                      System.out.print(<span class="text-orange-300">"["</span
+                      >);
+                    </div>
+                    <div class="ml-8">
+                      <span class="text-blue-400">for</span> (<span
+                        class="text-blue-400"
+                        >int</span
+                      >
+                      i = <span class="text-green-300">0</span>; i &lt;
+                      array.length; i++) {
+                    </div>
+                    <div class="ml-12">System.out.print(array[i]);</div>
+                    <div class="ml-12">
+                      <span class="text-blue-400">if</span> (i &lt; array.length
+                      - <span class="text-green-300">1</span>)
+                      System.out.print(<span class="text-orange-300">", "</span
+                      >);
+                    </div>
+                    <div class="ml-8">}</div>
+                    <div class="ml-8">
+                      System.out.println(<span class="text-orange-300">"]"</span
+                      >);
+                    </div>
+                    <div class="ml-4">}</div>
+
+                    <div class="mt-3 text-gray-400">
+                      // + ordenarOriginal() e obterCopiaOrdenada() dos slides
+                      anteriores
+                    </div>
+                    <div>}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">🎯</span>
+                  <h4 class="text-lg font-semibold text-orange-800">
+                    Saída Esperada do Programa:
+                  </h4>
+                </div>
+
+                <div class="bg-gray-900 rounded-xl p-4">
+                  <div class="text-green-400 font-mono text-sm">
+                    <div>=== TESTE 1: Modificar Original ===</div>
+                    <div>Antes: [64, 34, 25, 12, 22, 11, 90]</div>
+                    <div>Array ordenado (modificado)!</div>
+                    <div>Depois: [11, 12, 22, 25, 34, 64, 90]</div>
+                    <div class="mt-2">=== TESTE 2: Retornar Cópia ===</div>
+                    <div>Original: [64, 34, 25, 12, 22, 11, 90]</div>
+                    <div>
+                      Original após função: [64, 34, 25, 12, 22, 11, 90]
+                    </div>
+                    <div>Cópia ordenada: [11, 12, 22, 25, 34, 64, 90]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 11: Conclusões -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-green px-4 py-2 rounded-full text-green-700 font-medium mb-4"
+              >
+                <span>🎯</span>
+                Conclusões e Reflexões
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                O que Aprendemos Hoje?
+              </h1>
+              <p class="text-xl text-gray-600">
+                Recapitulando os conceitos fundamentais
+              </p>
+            </div>
+
+            <div class="space-y-8">
+              <!-- O que aprendemos -->
+              <div
+                class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200"
+              >
+                <div class="flex items-center gap-3 mb-6">
+                  <span class="text-2xl">🔍</span>
+                  <h2 class="text-2xl font-bold text-blue-800">
+                    Conceitos Fundamentais
+                  </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="bg-white rounded-xl p-4 border border-blue-100">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                      <span class="font-semibold text-blue-800"
+                        >Escopo de Variáveis</span
+                      >
+                    </div>
+                    <p class="text-blue-700 text-sm">
+                      Determina onde variáveis podem ser acessadas no código
+                    </p>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-4 border border-blue-100">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                      <span class="font-semibold text-purple-800"
+                        >Passagem por Valor</span
+                      >
+                    </div>
+                    <p class="text-purple-700 text-sm">
+                      Java sempre passa parâmetros por valor
+                    </p>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-4 border border-blue-100">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+                      <span class="font-semibold text-orange-800"
+                        >Objetos e Arrays</span
+                      >
+                    </div>
+                    <p class="text-orange-700 text-sm">
+                      Podem ser modificados através de referências
+                    </p>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-4 border border-blue-100">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                      <span class="font-semibold text-red-800"
+                        >Efeitos Colaterais</span
+                      >
+                    </div>
+                    <p class="text-red-700 text-sm">
+                      Devem ser evitados quando possível
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Boas Práticas -->
+              <div
+                class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
+              >
+                <div class="flex items-center gap-3 mb-6">
+                  <span class="text-2xl">✅</span>
+                  <h2 class="text-2xl font-bold text-green-800">
+                    Boas Práticas Aplicadas
+                  </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="bg-white rounded-xl p-6 border border-green-100">
+                    <div class="flex items-center gap-2 mb-4">
+                      <span class="text-xl">🎯</span>
+                      <h4 class="text-lg font-semibold text-green-800">
+                        Escopo
+                      </h4>
+                    </div>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700 text-sm"
+                          >Variáveis locais quando possível</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700 text-sm"
+                          >Minimizar variáveis globais</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700 text-sm"
+                          >Escopo mais restrito possível</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl p-6 border border-green-100">
+                    <div class="flex items-center gap-2 mb-4">
+                      <span class="text-xl">📤</span>
+                      <h4 class="text-lg font-semibold text-green-800">
+                        Parâmetros
+                      </h4>
+                    </div>
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700 text-sm"
+                          >Nomes claros e descritivos</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700 text-sm"
+                          >Evitar efeitos colaterais</span
+                        >
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700 text-sm"
+                          >Retornar novos objetos quando necessário</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lembre-se -->
+              <div
+                class="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl p-6 border border-yellow-300"
+              >
+                <div class="text-center">
+                  <div class="text-3xl mb-3">💡</div>
+                  <h3 class="text-xl font-bold text-orange-800 mb-3">
+                    Lembre-se
+                  </h3>
+                  <p class="text-orange-700 text-lg font-medium">
+                    Código limpo é código que outros desenvolvedores<br />
+                    (e você no futuro) conseguem entender facilmente!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 12: Exercícios Extras -->
+        <div class="slide hidden p-12 min-h-[600px] slide-transition">
+          <div class="space-y-8">
+            <div class="text-center">
+              <div
+                class="inline-flex items-center gap-2 bg-soft-purple px-4 py-2 rounded-full text-purple-700 font-medium mb-4"
+              >
+                <span>🏋️</span>
+                Exercícios para Casa
+              </div>
+              <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                Pratique os Conceitos!
+              </h1>
+              <p class="text-xl text-gray-600">
+                Atividades para consolidar o aprendizado
+              </p>
+            </div>
+
+            <div class="space-y-6">
+              <!-- Exercício 1 -->
+              <div
+                class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span
+                    class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold"
+                    >1</span
+                  >
+                  <h2 class="text-xl font-bold text-blue-800">
+                    Calculadora com Escopo
+                  </h2>
+                  <span
+                    class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+                    >Básico</span
+                  >
+                </div>
+
+                <div
+                  class="bg-white rounded-xl p-4 border border-blue-100 mb-4"
+                >
+                  <p class="text-blue-700 mb-3 font-medium">
+                    Crie uma classe Calculadora que:
+                  </p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-blue-700 text-sm"
+                        >Tenha métodos para as 4 operações básicas</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-blue-700 text-sm"
+                        >Use apenas variáveis locais</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-blue-700 text-sm"
+                        >Receba parâmetros claros e bem definidos</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-blue-700 text-sm"
+                        >Não use variáveis globais</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Exercício 2 -->
+              <div
+                class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span
+                    class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold"
+                    >2</span
+                  >
+                  <h2 class="text-xl font-bold text-green-800">
+                    Manipulação de Arrays
+                  </h2>
+                  <span
+                    class="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                    >Intermediário</span
+                  >
+                </div>
+
+                <div
+                  class="bg-white rounded-xl p-4 border border-green-100 mb-4"
+                >
+                  <p class="text-green-700 mb-3 font-medium">
+                    Implemente as seguintes funções:
+                  </p>
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <code
+                        class="bg-gray-100 px-2 py-1 rounded text-sm text-red-700"
+                        >dobrarValores(int[] array)</code
+                      >
+                      <span class="text-green-700 text-sm"
+                        >- modifica o original</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <code
+                        class="bg-gray-100 px-2 py-1 rounded text-sm text-green-700"
+                        >obterValoresDobrados(int[] array)</code
+                      >
+                      <span class="text-green-700 text-sm"
+                        >- retorna cópia</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span class="text-green-700 text-sm"
+                        >Demonstre a diferença entre ambas</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Exercício 3 -->
+              <div
+                class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-200"
+              >
+                <div class="flex items-center gap-3 mb-4">
+                  <span
+                    class="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold"
+                    >3</span
+                  >
+                  <h2 class="text-xl font-bold text-orange-800">
+                    Análise de Código
+                  </h2>
+                  <span
+                    class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-sm font-medium"
+                    >Avançado</span
+                  >
+                </div>
+
+                <div
+                  class="bg-white rounded-xl p-4 border border-orange-100 mb-4"
+                >
+                  <p class="text-orange-700 mb-3 font-medium">
+                    Analise códigos fornecidos e identifique:
+                  </p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span class="text-orange-700 text-sm"
+                        >Problemas de escopo</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                      <span class="text-orange-700 text-sm"
+                        >Efeitos colaterais indesejados</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span class="text-orange-700 text-sm"
+                        >Oportunidades de melhoria</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                      <span class="text-orange-700 text-sm"
+                        >Aplicação das boas práticas</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dica Final -->
+              <div
+                class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6 border border-purple-300"
+              >
+                <div class="text-center">
+                  <div class="text-3xl mb-3">🎯</div>
+                  <h3 class="text-xl font-bold text-purple-800 mb-3">
+                    Dica para os Exercícios
+                  </h3>
+                  <p class="text-purple-700 font-medium">
+                    Teste sempre suas implementações com diferentes valores!<br />
+                    Verifique se o comportamento está conforme esperado.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navegação -->
+        <div
+          class="bg-gradient-to-r from-gray-800 to-gray-900 p-6 flex justify-between items-center"
+        >
+          <button
+            class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 shadow-lg"
+            id="prevBtn"
+            onclick="changeSlide(-1)"
+          >
+            <span class="flex items-center gap-2">
+              <span>⬅️</span>
+              <span>Anterior</span>
+            </span>
+          </button>
+
+          <div
+            class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-2"
+          >
+            <span class="text-white font-semibold text-lg">
+              <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+            </span>
+          </div>
+
+          <button
+            class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 shadow-lg"
+            id="nextBtn"
+            onclick="changeSlide(1)"
+          >
+            <span class="flex items-center gap-2">
+              <span>Próximo</span>
+              <span>➡️</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
